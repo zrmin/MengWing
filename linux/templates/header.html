@@ -1,0 +1,32 @@
+<!-- 定义导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <!-- 导航商标 -->
+        <a class="navbar-brand" href="#">MengWing</a>
+
+        <!-- 导航入口 -->
+        <div>
+            <ul class="navbar-nav">
+                <!-- 条目 -->
+                <li class="nav-item">
+                    <!-- 改写了这里的href -->
+                    <a class="nav-link" href="{% url 'linux:linux_terminal' %}">linux online terminal</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'linux:linux_doc' %}">Linux doc</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">在线ide</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TyuChat</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
