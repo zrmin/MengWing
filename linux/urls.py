@@ -8,4 +8,6 @@ urlpatterns = [
     path('linux-article-list/', views.linux_article_list, name='linux_article_list'),
     # 文章详情
     path('linux-article-detail/<int:id>/', views.linux_article_detail, name='linux_article_detail'),
+    # 写文章
+    path('linux-article-create/', views.linux_article_create, name='linux_article_create'),
 ]
