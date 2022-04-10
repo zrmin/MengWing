@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['www.zrmin.top']
 # Application definition
 
 INSTALLED_APPS = [
+    'linux',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
