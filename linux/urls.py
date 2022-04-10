@@ -5,5 +5,5 @@ app_name = 'linux'
 
 urlpatterns = [
     path('linux-terminal/', views.linux_terminal, name='linux_terminal'),
-    path('linux-doc/', views.linux_doc, name='linux_doc'),
+    path('linux-article-list/', views.linux_article_list, name='linux_article_list'),
 ]
