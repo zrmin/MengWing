@@ -18,10 +18,20 @@ from django.http import HttpResponse
 from .forms import LinuxDocForm
 # 引入User模型
 from django.contrib.auth.models import User
+# 引入分页模块
+from django.core.paginator import Paginator
 
 def linux_article_list(request):
     # 取出所有LinuxDoc
-    articles = LinuxDoc.objects.all()
+    article_list = LinuxDoc.objects.all()
+
+    # 每页显示3篇文章
+    paginator = Paginator(article_list, 3)
+    # 获取url中的页码
+    page = request.GET.get('page')
+    # 将导航对象相应的页码内容返回给articles
+    articles = paginator.get_page(page)
+
     # 需要传递给模板templates的对象
     context = {'articles': articles}
     # render函数：载入模板，并返回context对象
