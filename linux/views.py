@@ -76,11 +76,11 @@ def linux_article_create(request):
         return render(request, 'linux/linux_article_create.html', context)
 
 # 安全删文章
-def article_safe_delete(request, id):
+def linux_article_safe_delete(request, id):
     if request.method == 'POST':
-        article = ArticlePost.objects.get(id=id)
+        article = LinuxDoc.objects.get(id=id)
         article.delete()
-        return redirect("article:article_list")
+        return redirect("linux:linux_article_list")
     else:
         return HttpResponse("仅允许POST请求")
 
