@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # 导入数据模型LinuxDoc
 from .models import LinuxDoc
@@ -47,6 +48,8 @@ def linux_article_detail(request, id):
     return render(request, 'linux/linux_article_detail.html', context)
 
 # 写文章的视图
+# 检查记录
+@login_required(login_url='/userprofile/login/')
 def linux_article_create(request):
     # 判断用户是否提交数据
     if request.method == "POST":
@@ -59,7 +62,7 @@ def linux_article_create(request):
             # 指定数据库中 id = 1 的用户为作者
             # 如果你进行过删除数据表的操作，可能会找不到id=1的用户
             # 此时请重新创建用户，并传入此用户的id
-            new_article.author = User.objects.get(id=1)
+            new_article.author = User.objects.get(id=request.user.id)
             # 将新文章保存到数据库中
             new_article.save()
             # 完成后返回到文章列表
