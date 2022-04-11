@@ -43,6 +43,10 @@ def linux_article_detail(request, id):
     # 取出相应的文章
     article = LinuxDoc.objects.get(id=id)
 
+    # 浏览量 + 1
+    article.total_views += 1
+    article.save(update_fields=['total_views'])
+
     # 将markdown语法渲染成html样式
     article.body = markdown.markdown(article.body,
             extensions=[
@@ -89,9 +93,12 @@ def linux_article_create(request):
         return render(request, 'linux/linux_article_create.html', context)
 
 # 安全删文章
+@login_required(login_url='/userprofile/login/')
 def linux_article_safe_delete(request, id):
     if request.method == 'POST':
         article = LinuxDoc.objects.get(id=id)
+        if request.user != article.author:
+            return HttpResponse("抱歉，你无权限删除该文章！")
         article.delete()
         return redirect("linux:linux_article_list")
     else:
@@ -99,6 +106,8 @@ def linux_article_safe_delete(request, id):
 
 
 # 更新文章
+# 提醒用户登录
+@login_required(login_url='/userprofile/login/')
 def linux_article_update(request, id):
     """
     更新文章的视图函数
@@ -109,6 +118,11 @@ def linux_article_update(request, id):
 
     # 获取需要修改的具体文章对象
     article = LinuxDoc.objects.get(id=id)
+
+    # 过滤非作者的用户
+    if request.user != article.author:
+        return HttpResponse("抱歉，你无权限修改这篇文章！")
+
     # 判断用户是否为 POST 提交表单数据
     if request.method == "POST":
         # 将提交的数据赋值到表单实例中
