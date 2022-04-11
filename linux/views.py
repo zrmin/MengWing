@@ -21,22 +21,26 @@ from django.contrib.auth.models import User
 # 引入分页模块
 from django.core.paginator import Paginator
 
+# 重写文章列表
 def linux_article_list(request):
-    # 取出所有LinuxDoc
-    article_list = LinuxDoc.objects.all()
+    # 根据GET请求中查询条件
+    # 返回不同排序的对象数组
+    if request.GET.get('order') == 'total_views':
+        article_list = LinuxDoc.objects.all().order_by('-total_views')
+        order = 'total_views'
+    else:
+        article_list = LinuxDoc.objects.all()
+        order = 'normal'
 
-    # 每页显示3篇文章
+    # 每页3篇文章
     paginator = Paginator(article_list, 3)
-    # 获取url中的页码
     page = request.GET.get('page')
-    # 将导航对象相应的页码内容返回给articles
     articles = paginator.get_page(page)
 
-    # 需要传递给模板templates的对象
-    context = {'articles': articles}
-    # render函数：载入模板，并返回context对象
-    return render(request, 'linux/linux_article_list.html', context)
+    # 修改此行
+    context = { 'articles': articles, 'order': order }
 
+    return render(request, 'linux/linux_article_list.html', context)
 
 # LinuxDoc详情
 def linux_article_detail(request, id):
