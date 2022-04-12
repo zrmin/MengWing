@@ -9,4 +9,4 @@ class LinuxDocForm(forms.ModelForm):
         # 指明数据模型来源
         model = LinuxDoc
         # 定义表单包含的字段
-        fields = ('title', 'body')
+        fields = ('title', 'body', 'tags', 'avatar')

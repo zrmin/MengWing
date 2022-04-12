@@ -34,13 +34,39 @@ INSTALLED_APPS = [
     'linux',
     'userprofile',
     'password_reset',
-    'django.contrib.admin',
+    'comment',
+    'taggit',
+    'ckeditor',
+    'mptt',
+    'notifications',
+    'notice',
+    # allauth 启动必须项
     'django.contrib.auth',
+    'django.contrib.messages',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # 可添加需要的第三方登录
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.weibo',
+
+    'django.contrib.admin',
+    # 'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    # 'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# 设置站点
+SITE_ID = 1
+
+# 登录成功后重定向地址
+# LOGIN_REDIRECT_URL = '/linux/linux_article-list'
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +96,14 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Django 后台可独立于 allauth 登录
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 配置 allauth 独有的认证方法，如 email 登录
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'mengwing.wsgi.application'
 
@@ -126,6 +160,37 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+KEDITOR_CONFIGS = {
+    # django-ckeditor默认使用default配置
+    'default': {
+        # 编辑器宽度自适应
+        'width':'auto',
+        'height':'250px',
+        # tab键转换空格数
+        'tabSpaces': 4,
+        # 工具栏风格
+        'toolbar': 'Custom',
+        # 工具栏按钮
+        'toolbar_Custom': [
+            # 表情 代码块
+            ['Smiley', 'CodeSnippet'],
+            # 字体风格
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            # 字体颜色
+            ['TextColor', 'BGColor'],
+            # 链接
+            ['Link', 'Unlink'],
+            # 列表
+            ['NumberedList', 'BulletedList'],
+            # 最大化
+            ['Maximize']
+        ],
+        # 插件
+        'extraPlugins': ','.join(['codesnippet', 'prism', 'widget', 'lineutils']),
+    }
+}
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

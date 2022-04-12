@@ -18,13 +18,24 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+import notifications.urls
+from linux.views import linux_article_list
 
 urlpatterns = [
+    path('', linux_article_list, name='home'),
     path('linux/', include('linux.urls', namespace='linux')),
     # 用户管理
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('admin/', admin.site.urls),
     path('password-reset/', include('password_reset.urls')),
+    # 评论
+    path('comment/', include('comment.urls', namespace='comment')),
+    # django-notifications
+    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    # notice
+    path('notice/', include('notice.urls', namespace='notice')),
+    # django-allauth
+    path('accounts/', include('allauth.urls')),
 ]
 
 # 为以后上传的图片配置URL路径
