@@ -15,7 +15,14 @@
 
                 <!-- Django的 if 模板语句 -->
                 {% if user.is_authenticated %}
-                    <!-- 如果用户已经登录，则显示用户名下拉框 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "notice:list" %}">
+                    <span>
+                        <i class="fas fa-bell" style="color: gray;"></i>
+                    </span>
+                    </a>
+                </li>
+                    <!-- 如果用户已经登录，则显示用户头像下拉框 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% if unread_count %}
