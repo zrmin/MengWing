@@ -38,6 +38,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # terminal
     path('terminal/', include('terminal.urls', namespace='terminal')),
+    # 应用中心
+    path('application/', include('application.urls', namespace='application')),
 ]
 
 # 为以后上传的图片配置URL路径
