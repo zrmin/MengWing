@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% load static %}
+
+{% block title %} 在线Terminal {% endblock title %}
+
+{% block content %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000" />
+  <link rel="icon" href="#" />
+  <link rel="stylesheet" href="{% static 'css/terminal/terminal.css' %}">
+
+
+<span class="title">在线terminal</span>
+  <div id="terminal">
+    <p class="hidden">
+      <span class="prompt"></span>
+      <span contenteditable="true" class="input"></span>
+    </p>
+  </div>
+  <script src="{% static 'js/terminal/crypto.js' %}"></script>
+  <script src="{% static 'js/terminal/util.js' %}"></script>
+  <script src="{% static 'js/terminal/boot.js' %}"></script>
+  <!-- 定义一个terminal对象 -->
+  <script src="{% static 'js/terminal/terminal.js' %}"></script>
+  <!-- 添加系统命令集 -->
+  <script src="{% static 'js/terminal/system.js' %}"></script>
+  <!-- 添加自定义命令集 -->
+  <script src="{% static 'js/terminal/commands.js' %}"></script>
+  <script>
+    let usebootLoader = true
+
+    let customPrompt = function () {
+      return `[root@locahost]&nbsp;&nbsp;${Terminal.path} &gt; `
+    }
+    Terminal.init(document.getElementById("terminal"), commands, customPrompt);
+  </script>
+
+{% endblock content %}
+

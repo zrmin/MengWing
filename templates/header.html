@@ -10,19 +10,6 @@
         <div>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">首页</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">校园</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">应用</a>
-                </li>
-
-
-                <li class="nav-item">
                     <a class="nav-link" href="{% url 'linux:linux_article_list' %}">文章</a>
                 </li>
 
@@ -42,7 +29,8 @@
                                     ></circle>
                                 </svg>
                             {% endif %}
-                            {{ user.username }}
+                            <img src="{{ user.profile.avatar.url }}" alt="{{ user.username}}的头像" style="margin: -5px; border-radius: 50%" width="35px">
+                            &nbsp;
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url "notice:list" %}">通知
@@ -52,7 +40,7 @@
                             </a>
                             <a class="dropdown-item" href="{% url 'linux:linux_article_create' %}">写文章</a>
                             <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
-                            <a class="dropdown-item" href="#" onclick="user_delete()">注销账号</a>
+                            <a class="dropdown-item" href="#" onclick="user_delete()">删除用户</a>
                             <a class="dropdown-item" href='{% url "userprofile:logout" %}'>退出登录</a>
                         </div>
                     </li>
@@ -83,7 +71,7 @@
             // 调用layer弹窗组件
             layer.open({
                 title: "确认注销账号",
-                content: "确认注销账号吗？注销后账号资料将删除",
+                content: "确认注销账号吗？注销后用户资料将删除",
                 yes: function(index, layero) {
                     $('form#user_delete button').click();
                     layer.close(index);

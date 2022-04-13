@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mptt',
     'notifications',
     'notice',
+    'terminal',
+
     # allauth 启动必须项
     'django.contrib.auth',
     'django.contrib.messages',
@@ -154,7 +156,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -210,3 +212,7 @@ EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = 'MengWing <2170428893@qq.com>'
 EMAIL_FROM = '2170428893@qq.com'
 DEFAULT_FROM_EMAIL = '2170428893@qq.com'
+
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+)

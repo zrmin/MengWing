@@ -36,6 +36,8 @@ urlpatterns = [
     path('notice/', include('notice.urls', namespace='notice')),
     # django-allauth
     path('accounts/', include('allauth.urls')),
+    # terminal
+    path('terminal/', include('terminal.urls', namespace='terminal')),
 ]
 
 # 为以后上传的图片配置URL路径

@@ -33,8 +33,8 @@ from django.views.generic.edit import CreateView
 # logger = logging.getLogger('django.request')
 
 # Linux Terminal
-def linux_terminal(request):
-    return HttpResponse("Linux Terminal")
+#def linux_terminal(request):
+ #   return HttpResponse("Linux Terminal")
 # 文章列表
 def linux_article_list(request):
     # 从 url 中提取查询参数
