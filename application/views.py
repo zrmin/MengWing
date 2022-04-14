@@ -7,8 +7,14 @@ def application_list(request):
 def application_terminal_info(request):
     return render(request, 'application/terminal_info.html')
 
+def application_webssh_info(request):
+    return render(request, 'application/webssh_info.html')
+
 def application_chat_info(request):
     return render(request, 'application/chat_info.html')
 
 def application_ide_info(request):
     return render(request, 'application/ide_info.html')
+
+def application_terminal(request):
+    return render(request, 'terminal/linux_terminal.html')

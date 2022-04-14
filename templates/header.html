@@ -24,6 +24,19 @@
 
                 <!-- Django的 if 模板语句 -->
                 {% if user.is_authenticated %}
+
+                <!-- 如果有消息则绘制出来 -->
+                {% if unread_count %}
+                    <svg viewBox="0 0 8 8"
+                         width="8px"
+                        <circle cx="4"
+                                cy="4"
+                                r="4"
+                                fill="#ff6b6b"
+                                ></circle>
+                    </svg>
+                {% endif %}
+                <!-- 铃铛通知消息 -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url "notice:list" %}">
                     <span>
@@ -31,6 +44,10 @@
                     </span>
                     </a>
                 </li>
+
+               {% if unread_count %}
+                    <span class="badge badge-danger">{{ unread_count }}</span>
+               {% endif %}
 
                     <!-- 如果用户已经登录，则显示用户头像下拉框 -->
                     <li class="nav-item dropdown">
