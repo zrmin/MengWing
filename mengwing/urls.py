@@ -40,6 +40,8 @@ urlpatterns = [
     path('terminal/', include('terminal.urls', namespace='terminal')),
     # 应用中心
     path('application/', include('application.urls', namespace='application')),
+    # webos
+    path('webos/', include('webos.urls', namespace='webos')),
 ]
 
 # 为以后上传的图片配置URL路径

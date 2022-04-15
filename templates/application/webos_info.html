@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+WebOS介绍
+{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-0 col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-9">
+
+      <div class="panel panel-default copy-with-link">
+        <div class="panel-body">
+
+
+          <h2 style="margin-top: 10px;">WebOS</h2>
+
+          <div style="color: #999999; font-size:14px;">
+            作者：
+            <a href="{% url "userprofile:edit" 5 %}">
+              <img src="http://www.zrmin.top:8000/media/avatar/20220411/head.jpg"
+                alt="作者的头像" style="border-radius: 50%; vertical-align: middle; border: 0" width=24px">
+              &nbsp;
+              <span style="font-size: 18px;">张润民</span>
+            </a>
+            ,&nbsp;
+            2022-04-13 21:53:30
+          </div>
+
+
+          <a href="{% url "webos:webos" %}">
+          <button class="btn btn-info pull-right open-application-btn" style="border-radius: 5px;">打开应用</button>
+          </a>
+
+
+          <br>
+
+
+
+          <hr style="margin-bottom: 10px;">
+              <br>
+
+
+              <div class="main-martor main-martor-content" data-field-name="content">
+                <div class="section-martor">
+                  <div class="ui bottom attached tab active martor-preview" data-tab="preview-tab-content">
+                    <p>LinuxOnline的Web-based OS</p>
+                    <p>LinuxOnlineOS 是采用HTML、CSS、Javascript和Django设计的Web-based OS。</p>
+                    <h4>操作</h4>
+                    <ol>
+                      <li>打开WebOS之后，会提示输入用户名</li>
+                      <li>像正常使用Windows一样去使用它吧……虽然它没有太多的功能……</li>
+                    </ol>
+                    <p>后续会增加更多的用户交互</p>
+                    <p><img alt="WebOS.png"
+                        src="https://pic.imgdb.cn/item/6259769e239250f7c539061d.png"
+                        style="cursor: default;"></p>
+                  </div>
+                </div>
+              </div>
+              <div id="overlay"></div>
+              <script>
+                $(document).ready(function () {
+                  let $images = $('.main-martor-content').find("img");
+                  $images.on('click', function () {
+                    $('#overlay')
+                      .css({ backgroundImage: `url(${this.src})` })
+                      .addClass('open')
+                      .one('click', function () { $(this).removeClass('open'); });
+                  });
+
+                  $images.css("cursor", "pointer");
+                });
+              </script>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}

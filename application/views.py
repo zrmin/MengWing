@@ -18,3 +18,9 @@ def application_ide_info(request):
 
 def application_terminal(request):
     return render(request, 'terminal/linux_terminal.html')
+
+def application_webos_info(request):
+    return render(request, 'application/webos_info.html')
+
+def application_webos(request):
+    return render(request, 'webos/webos.html')
