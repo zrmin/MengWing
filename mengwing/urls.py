@@ -42,6 +42,8 @@ urlpatterns = [
     path('application/', include('application.urls', namespace='application')),
     # webos
     path('webos/', include('webos.urls', namespace='webos')),
+    # chat
+    path('chat/', include('chat.urls', namespace='chat')),
 ]
 
 # 为以后上传的图片配置URL路径

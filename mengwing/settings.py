@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'notice',
     'terminal',
     'webos',
+    'chat',
+
     # allauth 启动必须项
     'django.contrib.auth',
     'django.contrib.messages',
@@ -70,15 +72,19 @@ SITE_ID = 1
 # LOGIN_REDIRECT_URL = '/linux/linux_article-list'
 LOGIN_REDIRECT_URL = '/'
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+   # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'mengwing.CorsMiddleware.Cors',
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ROOT_URLCONF = 'mengwing.urls'
 

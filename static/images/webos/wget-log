@@ -1,0 +1,11 @@
+--2022-04-17 01:49:33--  https://th.bing.com/th/id/R.79eaab46648de458f72faea9d33888c7?rik=Kj5cSPiSHwd6dg
+Resolving th.bing.com (th.bing.com)... 202.89.233.101, 202.89.233.100
+Connecting to th.bing.com (th.bing.com)|202.89.233.101|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 445817 (435K) [image/jpeg]
+Saving to: '2.jpg'
+
+2.jpg                       0%[                                     ]       0  --.-KB/s               2.jpg                      82%[=============================>       ] 358.94K  1.65MB/s               2.jpg                     100%[====================================>] 435.37K  2.00MB/s    in 0.2s    
+
+2022-04-17 01:49:34 (2.00 MB/s) - '2.jpg' saved [445817/445817]
+

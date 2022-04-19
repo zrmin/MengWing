@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-WebOS介绍
+Browser-based OS介绍
 {% endblock title %}
 
 {% block content %}
@@ -15,22 +15,22 @@ WebOS介绍
         <div class="panel-body">
 
 
-          <h2 style="margin-top: 10px;">WebOS</h2>
+          <h2 style="margin-top: 10px;">Browser-based Linux</h2>
 
           <div style="color: #999999; font-size:14px;">
-            作者：
+            提供者：
             <a href="{% url "userprofile:edit" 5 %}">
               <img src="http://www.zrmin.top:8000/media/avatar/20220411/head.jpg"
                 alt="作者的头像" style="border-radius: 50%; vertical-align: middle; border: 0" width=24px">
               &nbsp;
-              <span style="font-size: 18px;">张润民</span>
+              <span style="font-size: 18px;">张润民、孔德华、李佳琦</span>
             </a>
             ,&nbsp;
-            2022-04-13 21:53:30
+            2022-04-13 12:43:29
           </div>
 
-
-          <a href="{% url "webos:webos" %}">
+          <!-- <a href="{% url "webos:webos" %}"> -->
+          <a href="http://www.zrmin.top:3000/" target="_blank">
           <button class="btn btn-info pull-right open-application-btn" style="border-radius: 5px;">打开应用</button>
           </a>
 
@@ -46,16 +46,16 @@ WebOS介绍
               <div class="main-martor main-martor-content" data-field-name="content">
                 <div class="section-martor">
                   <div class="ui bottom attached tab active martor-preview" data-tab="preview-tab-content">
-                    <p>LinuxOnline的Web-based OS</p>
-                    <p>LinuxOnlineOS 是采用HTML、CSS、Javascript和Django设计的Web-based OS。</p>
+                    <p>LinuxOnline为用户提供的Browser-based Linux。</p>
+                    <p>为用户提供网页版Linux系统，不依赖具体硬件环境，可以在浏览器中学习Linux操作。</p>
                     <h4>操作</h4>
                     <ol>
-                      <li>打开WebOS之后，会提示输入用户名</li>
-                      <li>像正常使用Windows一样去使用它吧……虽然它没有太多的功能……</li>
+                      <li>打开应用之后，会提示输入密码。</li>
+                      <li>用户名和密码均为<b>abc</b>。</li>
+                      <li>物理Linux机器支持的操作，Browser-based Linux均支持。</li>
                     </ol>
-                    <p>后续会增加更多的用户交互</p>
                     <p><img alt="WebOS.png"
-                        src="https://pic.imgdb.cn/item/6259769e239250f7c539061d.png"
+                        src="https://pic.imgdb.cn/item/625ceb16239250f7c57e3f15.png"
                         style="cursor: default;"></p>
                   </div>
                 </div>
