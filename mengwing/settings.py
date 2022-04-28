@@ -43,25 +43,14 @@ INSTALLED_APPS = [
     'terminal',
     'webos',
     'chat',
+    'question',
 
-    # allauth 启动必须项
-    'django.contrib.auth',
-    'django.contrib.messages',
-    'django.contrib.sites',
-
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
-    # 可添加需要的第三方登录
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.weibo',
 
     'django.contrib.admin',
-    # 'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.messages',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
 
@@ -69,8 +58,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 # 登录成功后重定向地址
-# LOGIN_REDIRECT_URL = '/linux/linux_article-list'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/linux/linux_article-list'
 
 
 MIDDLEWARE = [
@@ -179,7 +167,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-KEDITOR_CONFIGS = {
+CKEDITOR_CONFIGS = {
     # django-ckeditor默认使用default配置
     'default': {
         # 编辑器宽度自适应

@@ -27,7 +27,7 @@ class ArticleColumn(models.Model):
 
 
 # Django中所有的模型(Model)都必须继承django.db.models.Model模型，即顶部的导入
-# 建立博客文章类 class LinuxDoc，处理与文章有关的数据，它包含需要的字段和保存数据的行为
+# 建立LinuxOnline文章类 class LinuxDoc，处理与文章有关的数据，它包含需要的字段和保存数据的行为
 class LinuxDoc(models.Model):
     """
     文章的 Model

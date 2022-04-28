@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from .forms import UserLoginForm
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm
 from .models import Profile
 
+# 用户登录
 def user_login(request):
     if request.method == 'POST':
         user_login_form = UserLoginForm(data=request.POST)
@@ -49,7 +50,7 @@ def user_register(request):
             # 设置密码
             new_user.set_password(user_register_form.cleaned_data['password'])
             new_user.save()
-            # 保存好数据后立即登录并返回博客列表页面
+            # 保存好数据后立即登录并返回文章列表页面
             login(request, new_user)
             return redirect("linux:linux_article_list")
         else:

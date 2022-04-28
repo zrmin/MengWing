@@ -1,0 +1,71 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    提问详情
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 提问详情 -->
+<div class="container">
+    <div class="row">
+        <!-- 标题及作者 -->
+        <h1 class="col-12 mt-4 mb-4">{{ question.title }}</h1>
+        <div class="col-12 alert alert-success">作者：{{ question.author }}
+           <!-- · <a href="#" onclick="confirm_delete()">删除该提问</a> -->
+            · <a href="#" onclick="confirm_safe_delete()">删除该提问</a>
+            · <a href="{% url "question:question_update" question.id %}">编辑提问</a>
+            <!-- 新增一个隐藏的表单 -->
+            <form
+                style="display:none;"
+                id="safe_delete"
+                action="{% url 'question:question_safe_delete' question.id %}" 
+                method="POST"
+            >
+            {% csrf_token %}
+            <button type="submit">发送</button>
+        </form>
+
+        </div>
+        <!-- 提问正文 -->
+        <div class="col-12">
+            <p>{{ question.body|safe }}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 删除提问的函数
+    function confirm_delete() {
+        // 调用layer弹窗组件
+        layer.open({
+            // 弹窗标题
+            title: "确认删除",
+            // 正文
+            content: "确认删除这篇提问吗？",
+            // 点击确定按钮后调用的回调函数
+            yes: function(index, layero) {
+                // 指定应当前往的 url
+                location.href='{% url "question:question_delete" question.id %}'
+            },
+        })
+    }
+
+function confirm_safe_delete() {
+    layer.open({
+        title: "确认删除",
+        content: "确认删除这篇提问吗？",
+        yes: function(index, layero) {
+            $('form#safe_delete button').click();
+            layer.close(index);
+        }
+    })
+}
+
+</script>
+
+{% endblock content %}

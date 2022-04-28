@@ -23,7 +23,10 @@ from linux.views import linux_article_list
 
 urlpatterns = [
     path('', linux_article_list, name='home'),
+    # LinuxdDoc
     path('linux/', include('linux.urls', namespace='linux')),
+    # 提问
+    path('question/', include('question.urls', namespace='question')),
     # 用户管理
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('admin/', admin.site.urls),
@@ -34,8 +37,6 @@ urlpatterns = [
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
     # notice
     path('notice/', include('notice.urls', namespace='notice')),
-    # django-allauth
-    path('accounts/', include('allauth.urls')),
     # terminal
     path('terminal/', include('terminal.urls', namespace='terminal')),
     # 应用中心

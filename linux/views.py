@@ -250,7 +250,7 @@ def linux_article_update(request, id):
             article.tags.set(*request.POST.get('tags').split(','), clear=True)
             article.save()
             # 完成后返回到修改后的文章中。需传入文章的 id 值
-            return redirect("article:article_detail", id=id)
+            return redirect("linux:linux_article_detail", id=id)
         # 如果数据不合法，返回错误信息
         else:
             return HttpResponse("表单内容有误，请重新填写。")

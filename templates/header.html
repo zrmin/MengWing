@@ -1,16 +1,23 @@
 {% load notifications_tags %}
 {% notifications_unread as unread_count %}
 
+<style type="text/css">
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 2rem;
+    padding-left: 1rem;
+}
+</style>
+
 <!-- 定义导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <!-- 导航栏商标 -->
-        <a class="navbar-brand" href="#">LinuxOnline</a>
+        <a class="navbar-brand" href="/">LinuxOnline</a>
         <!-- 导航入口 -->
-        <div>
-            <ul class="navbar-nav">
+        <!-- <div> -->
+         <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url "application:application_list" %}">应用</a>
+                    <a class="nav-link" href="{% url "application:application_list" %}" target=blank>应用</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -18,9 +25,16 @@
                         文章
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url "linux:linux_article_list" %}">LinuxDoc</a>
-                        <a class="dropdown-item" href="{% url "linux:linux_article_create" %}">写文章</a>
+                        <a class="dropdown-item" href="{% url "linux:linux_article_list" %}" target=blank>LinuxDoc</a>
+                        <a class="dropdown-item" href="{% url "linux:linux_article_create" %}" target=blank>分享</a>
+                        <a class="dropdown-item" href="{% url 'question:question_list' %}" target=blank>问答</a>
+                        <a class="dropdown-item" href="{% url 'question:question_create' %}">提问</a>
                     </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.zrmin.top:5000/" target=blank>吐槽</a>
+                </li>
 
                 <!-- Django的 if 模板语句 -->
                 {% if user.is_authenticated %}
@@ -67,12 +81,12 @@
                             &nbsp;
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url "notice:list" %}">通知
+                            <a class="dropdown-item" href="{% url "notice:list" %}" target=blank>通知
                                 {% if unread_count %}
                                     <span class="badge badge-danger">{{ unread_count }}</span>
                                 {% endif %}
                             </a>
-                            <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>个人信息</a>
+                            <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}' target=blank>个人信息</a>
                             <a class="dropdown-item" href="#" onclick="user_delete()">注销账号</a>
                             <a class="dropdown-item" href='{% url "userprofile:logout" %}'>退出登录</a>
                         </div>
@@ -80,12 +94,12 @@
                 <!-- 如果用户未登录，则显示 “登录” -->
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">登录</a>
+                        <a class="nav-link" href="{% url 'userprofile:login' %}">登录</a>
                     </li>
                 <!-- if 语句在这里结束 -->
                 {% endif %}
             </ul>
-        </div>
+            <!-- </div> -->
     </div>
 </nav>
 

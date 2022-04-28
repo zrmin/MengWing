@@ -30,7 +30,7 @@ Tyuchat介绍
           </div>
 
 
-          <a href="{% url "terminal:linux_terminal" %}">
+          <a href="http://www.zrmin.top:5000/">
           <button class="btn btn-info pull-right open-application-btn" style="border-radius: 5px;">打开应用</button>
           </a>
 
@@ -49,10 +49,10 @@ Tyuchat介绍
                     <p>LinuxOnline的在线聊天APP</p>
                     <h4>功能</h4>
                     <ol>
-                        <li>支持聊天功能、联系人查找、联系人在线状态显示、个人签名展示等</li>
+                        <li>支持网站用户公共聊天、好友私聊、好友管理、联系人查找、联系人在线状态显示</li>
                         <li>点击消息框内好友用户名可跳转至好友个人空间，查看对方状态等</li>
                     </ol>
-                    <p>后续会支持群聊、截图、文件传输（源文件、项目等）、语音聊天、视频聊天、表情包上传、好友管理等</p>
+                    <p>后续会支持群聊、截图、文件传输（源文件、项目等）、语音聊天、视频聊天、表情包上传、个人签名展示等</p>
                     <p><img alt="linuxOnlineTerminal.png"
                         src="https://pic.imgdb.cn/item/6257d39e239250f7c5cecc91.png"
                         style="cursor: pointer;"></p>
@@ -60,20 +60,6 @@ Tyuchat介绍
                 </div>
               </div>
               <div id="overlay"></div>
-              <script>
-                $(document).ready(function () {
-                  let $images = $('.main-martor-content').find("img");
-                  $images.on('click', function () {
-                    $('#overlay')
-                      .css({ backgroundImage: `url(${this.src})` })
-                      .addClass('open')
-                      .one('click', function () { $(this).removeClass('open'); });
-                  });
-
-                  $images.css("cursor", "pointer");
-                });
-              </script>
-
             </div>
           </div>
         </div>

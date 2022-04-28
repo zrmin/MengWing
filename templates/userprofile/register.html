@@ -1,36 +1,84 @@
 {% extends "base.html" %} {% load static %}
-{% block title %} 登录 {% endblock title %}
+{% block title %} LinuxOnline注册 {% endblock title %}
+
+
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <br>
-            <form method="post" action=".">
+
+<style type="text/css">
+
+  .card-signin {
+      width: 100%;
+      max-width: 400px;
+      padding: 15px;
+      margin: auto;
+  }
+
+  .form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="text"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin input[type="password"] {
+    margin-bottom: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+ .card-option {
+    color: white;
+    font-size: 2.5vh;
+    display: inline;
+    float: right;
+    padding-right: 1.5vw;
+    cursor: pointer;
+    text-align: right;
+}
+
+</style>
+
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="card card-signin">
+            <div class="card-body">
+            <form class="form-signin" method="post" action=".">
                 {% csrf_token %}
+                <div class="d-flex flex-column pb-3">
+                <img class="img-fluid mx-auto d-block" src="https://pic.imgdb.cn/item/62665740239250f7c5217718.png" alt="linuxonline logo" width="72" height="72">
+                </div>
                 <!-- 账号 -->
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="username">昵称</label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 <!-- 邮箱 -->
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="email">邮箱</label>
                     <input type="text" class="form-control" id="email" name="email">
                 </div>
                 <!-- 密码 -->
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="password">设置密码</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <!-- 确认密码 -->
-                <div class="form-group col-md-4">
+                <div class="form-group">
                     <label for="password2">确认密码</label>
                     <input type="password" class="form-control" id="password2" name="password2" required>
                 </div>
                 <!-- 提交按钮 -->
-                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="submit" class="btn btn-lg btn-primary btn-block">注册</button>
             </form>
         </div>
-    </div>
+        <div class="card-option">
+            <a href="{% url "userprofile:login" %}">登录</a>
+        </div>
+        </div>
 </div>
 {% endblock content %}

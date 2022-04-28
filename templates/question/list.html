@@ -1,0 +1,38 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "base.html" %}
+{% load static %}
+
+<!-- 写入 base.html 中定义的 title -->
+{% block title %}
+    问答
+{% endblock title %}
+
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+
+<!-- 定义放置提问标题的div容器 -->
+<div class="container">
+    <div class="row mt-2">
+
+        {% for question in questions %}
+        <!-- 提问内容 -->
+        <div class="col-4 mb-4">
+        <!-- 卡片容器 -->
+            <div class="card h-100">
+                <!-- 标题 -->
+                <h4 class="card-header">{{ question.title }}</h4>
+                <!-- 摘要 -->
+                <div class="card-body">
+                    <p class="card-text">{{ question.body|slice:'50' }}...</p>
+                </div>
+                <!-- 注脚 -->
+                <div class="card-footer">
+                    <a href="{% url 'question:question_detail' question.id %}" class="btn btn-primary">阅读全文</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}
